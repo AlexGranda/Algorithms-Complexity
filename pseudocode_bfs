@@ -1,0 +1,44 @@
+BFS(G,s) {
+for each (u in V){
+       mark[u] = undiscovered
+        d[u]    = infinity
+        pred[u] = null
+
+   }
+    	mark[s] = discovered
+   	 d[s] = 0
+   	 Q = {s}
+     //color the s vertex
+     s.color = red
+   	while (Q is nonempty) {
+u = dequeue from head of Q
+for each (v in Adj[u]) {
+	if (mark[v] == undiscovered) {
+		mark[v] = discovered
+		d[v]    = d[u]+1
+           //the child is colored with the opposite color ----------------of parent
+           if u.color == blue:
+               v.color = red
+           else:
+               v.color = blue
+		   pred[v] = u
+		   append v to the tail of Q
+			}
+
+                // check if the distance from v to u is the same,             ----------------if yes, call the function lowest_common_ancestor, ----------------and then print the result.
+			else if d[v] == d[u]
+                     print “the odd cycle was identify”
+                     print function lowest_common_ancestor(u, v)
+                     Terminate
+}
+mark[u] = finished
+}
+}
+//in this part we check until the lowest common ancestor is found
+function lowest_common_ancestor(u, v):
+         while u!= v then:
+               print(u)
+               print(v)
+               u = pred[u]
+               v = pred[v]
+         Return u
