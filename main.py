@@ -17,7 +17,6 @@ def bfs(graph, root_vertex, vertexes_list):
         distance_to_root[vertex] = None
         color[vertex] = None
 
-
     # Create a list to store visited vertexes.
     # Create a list to store queue vertexes.
     vertexes_visited = []
@@ -49,25 +48,16 @@ def bfs(graph, root_vertex, vertexes_list):
                 vertexes_queue.append(neighbour)
             else:
                 if distance_to_root[neighbour] == distance_to_root[vertex]:
-                    print("test")
+                    print("An odd cycle is identified")
+                    lowest_common_ancestor(vertex, neighbour)
+                    quit()
 
 
-# def bfs(visit_complete, graph, current_node):
-#     visit_complete.append(current_node)
-#     queue = []
-#     queue.append(current_node)
 #
-#     while queue:
-#         s = queue.pop(0)
-#         print(s)
-#
-#         for neighbour in graph[s]:
-#             if neighbour not in visit_complete:
-#                 visit_complete.append(neighbour)
-#                 queue.append(neighbour)
-#
-#
-# bfs([], graph, 'A')
+def lowest_common_ancestor(ancestor, neighbour):
+    while ancestor != neighbour:
+        ancestor = predecessors[ancestor]
+        neighbour = predecessors[neighbour]
 
 
 if __name__ == '__main__':
@@ -84,4 +74,3 @@ if __name__ == '__main__':
     for i in graph_a:
         print(graph_a[i])
     # bfs(graph_a, 0, graph_a.keys())
-
