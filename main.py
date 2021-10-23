@@ -42,6 +42,7 @@ def bfs(graph, root_vertex, vertexes_list):
                 return lowest_common_ancestor(vertex, neighbour)
 
     bipartite = True
+    print("Graph is bipartite")
     return color_vertexes
 
 
@@ -55,6 +56,7 @@ def lowest_common_ancestor(ancestor, neighbour):
         neighbour = predecessors[neighbour]
 
     odd_cycle_vertexes[distance_to_root[ancestor]] = {ancestor, neighbour}
+    print("An odd cycle is identified")
     return odd_cycle_vertexes
 
 
@@ -62,13 +64,11 @@ def check_bfs_result(bfs_result_value, odd_cycle_value, bipartite_value, graph, 
     # Check if the odd cycle value is true, is so print the bfs graph result.
     # In this case the odd cycle is going to be printed.
     if odd_cycle_value is True:
-        print("An odd cycle is identified")
         print(bfs_result_value)
 
     # Check if the bipartite_value is true, and then print the result of the bfs function.
     # In this case the nodes colored with be printed
     elif bipartite_value is True:
-        print("Graph is bipartite")
         print(bfs_result_value)
         print("-------")
         # Check it there are ni vertex that is disconnected from the graph, if so rerun the function into that
